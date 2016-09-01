@@ -19,6 +19,13 @@ namespace LinqExercises.Controllers
         [HttpGet, Route("api/suppliers/salesAndMarketing"), ResponseType(typeof(IQueryable<Supplier>))]
         public IHttpActionResult GetSalesAndMarketing()
         {
+
+            var Lola = _db.Suppliers.Where(s => (s.ContactTitle == "Marketing Manager" ||
+                                                     s.ContactTitle == "Sales Representative") &&
+                                                     s.Fax != null);
+
+            return Ok(Lola);
+
             throw new NotImplementedException("Write a query to return all Suppliers that are marketing managers or sales representatives that have a fax number");
         }
 
@@ -26,6 +33,14 @@ namespace LinqExercises.Controllers
         [HttpGet, Route("api/suppliers/search"), ResponseType(typeof(IQueryable<Supplier>))]
         public IHttpActionResult SearchSuppliers(string term)
         {
+            var Maria = _db.Suppliers
+                                .Where(s => s.Address.Contains(term))
+                                .OrderBy(s => s.CompanyName)
+                                .Select(s => s);
+
+
+            return Ok(Maria);
+
             throw new NotImplementedException("Write a query to return all Suppliers containing the 'term' variable in their address. The list should ordered alphabetically by company name.");
         }
 

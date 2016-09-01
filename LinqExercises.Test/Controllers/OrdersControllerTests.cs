@@ -33,20 +33,7 @@ namespace LinqExercises.Test.Controllers
             // ASSERT
             Assert.IsNotNull(contentResult);
             Assert.IsNotNull(contentResult.Content);
-            Assert.AreEqual(contentResult.Content.Count(), 398);
-        }
-
-        [TestMethod]
-        public void PurchaseReportTest()
-        {
-            // ACT
-            IHttpActionResult actionResult = _ordersController.PurchaseReport();
-            var contentResult = actionResult as OkNegotiatedContentResult<IQueryable<object>>;
-
-            // ASSERT
-            Assert.IsNotNull(contentResult);
-            Assert.IsNotNull(contentResult.Content);
-            Assert.AreEqual(contentResult.Content.Count(), 77);
+            Assert.AreEqual(contentResult.Content.Count(), 307);
         }
     }
 }
